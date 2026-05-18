@@ -122,63 +122,64 @@
    3. In the RetroPie-Setup menu, go to `Configuration / Tools` → `samba` → `Install` or `Enable`.
 
 2. Configure Samba sharing:
-   1. Edit the Samba configuration:
-      ```bash
-      sudo nano /etc/samba/smb.conf
-      ```
-   2. Add a share entry at the end of the file:
-      ```ini
-      [retropie]
-      path = /home/pi/RetroPie
-      read only = no
-      guest ok = no
-      create mask = 0775
-      directory mask = 0775
-      valid users = pi
-      ```
-   3. Save and exit (Ctrl+O, Enter, Ctrl+X).
-   4. Set or update the Samba password for `pi`:
-      ```bash
-      sudo smbpasswd -a pi
-      sudo systemctl restart smbd
-      ```
+   > [!NOTE] 
+   > Please search this part up on the internet, I can not explain how to do this. (It envolves way higher levels of Terminal) 
 
-3. Access the share from your computer:
-   - Username: `pi`
-   - Password: the password you set with `passwd` / `smbpasswd`.
-   - **macOS**: Finder → Go → Connect to Server → `smb://<YOUR_RASPI_IP>/retropie`.
-   - **Windows**: File Explorer → `\\<YOUR_RASPI_IP>\retropie`.
-   - **Linux**: Use your file manager's network browser or `smbclient`.
+3. Access from your computer:
 
-4. ROM files should be copied to:
-   ```text
-   /home/pi/RetroPie/roms/<SYSTEM>/
-   ```
+> [!NOTE] Credentials
+> Username: `pi`
+> Password: `<your_password>`
+
+   - **Linux**:
+    - Use your file manager's network browser or `smbclient`.
+   - **macOS**: 
+        1. Open Any Internet Browser
+        2. Type in: `smb://retropie-<your_classroom>`
+        3. It will automatically open finder/file-system window
+        4. Navigate to `/retropie/roms/<your_emulator>`
+        5. Drag and drop you file into that folder
+        6. Done
+   - **Windows**: 
+        1. Open File Explorer
+        2. In search bar type `\\<YOUR_RASPI_IP>\roms`
+        3. Navigate to `/retropie/roms/<your_emulator>`
+        4. Drag and drop you file into that folder
+        5. Done
 
 ### Install McAirpos
 
 McAirpos is an application for managing and emulating MakeCode Arcade games on RetroPie.
 
 1. Download and install McAirpos:
-   ```bash
-   wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
-   bash install.sh
-   rm install.sh
-   ```
+   1. Open Terminal
+   2. Type this(one line at a time):
+   > ```bash
+   > wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
+   > bash install.sh
+   > rm install.sh
+   > ```
+   3. Done
 
 2. Configure McAirpos:
    > [!WARNING]
-   > Do not change McAirpos settings unless you understand the configuration.
+   > **DON NOT CONFIGURE MCAIRPOS**
+   > It is specifically configured to RetroPie and will break with any none unverifed tampering!
+   > If configuration is required please contact someone on the internet with this knowledge!
 
 3. Update McAirpos:
    > [!WARNING]
-   > This may remove games from the MakeCode emulator. Back up your ROMs first.
-   ```bash
-   rm -rf <the_directory_with_makecode_or_mcairpos>
-   wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
-   bash install.sh
-   rm install.sh
-   ```
+   > THIS WILL DELETE ALL GAMES IN MAKECODE EMULATOR PLEASE BACKUP ALL ROMS IN MAKECODE EMULATOR
+   1. Open Terminal
+   2. Type this(one line at a time):
+   > ```bash
+   > ls
+   > rm -rf <the_directory_with_makecode_or_mcairpos>
+   > wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
+   > bash install.sh
+   > rm install.sh
+   > ```
+   3. Done
 
 ---
 
@@ -186,22 +187,44 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 
 ### Adding ROM Files
 
-1. **Via Network Share (recommended)**:
-   - Connect to your Samba share from your computer.
-   - Use the same credentials you set for the `pi` account.
-   - Copy ROM files into the appropriate folder: `retropie/roms/<SYSTEM>/`.
-   - Games should appear in EmulationStation within a few seconds.
+1. **Via Network Share (Recommended)**:
+   - Connect to your Samba share from your computer (see Network Share section if not configured or look at note below):
+>    > [!NOTE] Credentials
+>    > Username: `pi`
+>    > Password: `<your_password>`
+>
+>   - **Linux**:
+>        1. Open terminal
+>        2. Type in: `mv <your_game_file> smb://retropie-<your_classroom>/retropie/roms/<your_emulator>`
+>        3. Done
+>   - **macOS**: 
+>        1. Open Any Internet Browser
+>        2. Type in: `smb://retropie-<your_classroom>`
+>        3. It will automatically open finder/file-system window
+>        4. Navigate to `/retropie/roms/<your_emulator>`
+>        5. Drag and drop you file into that folder
+>        6. Done
+>   - **Windows**: 
+>        1. Open File Explorer
+>        2. In search bar type `\\<YOUR_RASPI_IP>\roms`
+>        3. Navigate to `/retropie/roms/<your_emulator>`
+>        4. Drag and drop you file into that folder
+>        5. Done
+>   - Games will appear in EmulationStation within 10 seconds
 
-2. **Via USB Drive**:
-   - Create a folder named `retropie` on the USB drive.
-   - Inside it, create `retropie/roms/<SYSTEM>/`.
-   - Copy your ROM files into the correct system folder.
-   - Plug the drive into the Raspberry Pi.
-   - From the RetroPie menu, select `Tools` → `USB-ROM Service`.
-   - Choose the USB drive and wait for the import to complete.
+1. **Via USB Drive**:
+   - Create a USB drive or any storage drive with the folder: `retropie/`
+   - Plug drive into Raspberry PI
+   - Wait until binking on drive stops or becomes steady; Then wait ten more seconds
+   - Unplug drive; And plug back into seperrate computer
+   - Place ROMs/Game files in: `retropie/roms/<your_game_emulator>/`
+   - Plug drive back into Raspberry PI
+   - From RetroPie menu → Tools → **USB-ROM Service**
+   - Select your USB drive and confirm
+   - Wait for import to complete
 
-3. **Via SSH**:
-   > [!NOTE] This method is advanced and recommended for experienced users.
+2. **Via SSH**:
+   > [!NOTE] This method is advanced and will not work first try and only recommended for experienced users.
    ```bash
    ssh pi@<YOUR_RASPI_IP>
    scp /path/to/roms/* pi@<YOUR_RASPI_IP>:/home/pi/RetroPie/roms/<SYSTEM>/
@@ -217,7 +240,7 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 - **Game Boy Color**: .gbc, .zip
 - **Game Boy Advance**: .gba, .zip
 - **Godot**: .zip, .pck
-- **MakeCode Arcade**: .elf, .uf2 (convert to .elf if required)
+- **MakeCode Arcade**: .elf, .uf2 (conversion to .elf required)
 
 ---
 
@@ -240,13 +263,13 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
    ```bash
    ssh pi@<YOUR_RASPI_IP>
    # Default password: raspberry
-   # Recommended: change the password with passwd
+   # Recommended to change the password
    ```
 
 ### Install GODOT Emulator
 
-1. Follow the RetroPie Godot emulator installation guide:
-   - [RetroPie-Godot-Engine-Emulator](https://github.com/hiulit/RetroPie-Godot-Engine-Emulator)
+1. To install you will need a github account and follow the RetroPie Godot emulator installation guide:
+   - link: [RetroPie-Godot-Engine-Emulator](https://github.com/hiulit/RetroPie-Godot-Engine-Emulator?scrlybrkr=46f570ca)
 
 2. Add Godot games:
    - Place `.zip` or `.pck` files in `/home/pi/RetroPie/roms/godot/`.
@@ -254,7 +277,7 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 
 ### Edit Menu
 
-1. SSH into your Raspberry Pi:
+1. SSH into your Raspberry Pi; Then:
    ```bash
    nano /home/pi/.emulationstation/es_systems.cfg
    ```
@@ -286,10 +309,11 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 **No games appearing:**
 - Ensure ROM files are in the correct `/home/pi/RetroPie/roms/<SYSTEM>/` folder.
 - Check that file extensions are supported.
-- Restart EmulationStation: Press `Start` → `Quit`.
+- Restart EmulationStation: Press `Start` → `Quit` → `Restart`.
 
 **Network share not accessible:**
-- Verify the Raspberry Pi and your computer are on the same network.
+- Verify the Raspberry Pi and your computer are connected to the same network.
+  > [!IMPORTANT] Ethernet is not the same network as your wifi; It will not work.
 - Check the IP address.
 - Restart Samba in a terminal:
   ```bash
@@ -301,5 +325,6 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 
 **Last Updated:** May 15, 2026
 **Created By:** Nolan F. Nelson, 7th Grade
-**Email:** N/A; create an issue instead.
+**Email:** N/A; create a GitHub issue instead.
+**Discord:** Need even more help? DM me at: MY_DISCORD_LINK
 
