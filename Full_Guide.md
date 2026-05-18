@@ -229,6 +229,11 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
    ssh pi@<YOUR_RASPI_IP>
    scp /path/to/roms/* pi@<YOUR_RASPI_IP>:/home/pi/RetroPie/roms/<SYSTEM>/
    ```
+3. **Via Boot Drive**:
+   - Unplug boot drive from Raspberry PI
+   - Plug into a seperrate computer
+   - Place ROMs/Game files in: `retropie/roms/<your_game_emulator>/`
+   - Plug drive back into Raspberry PI
 
 ### Supported Systems & File Types
 - **NES**: .nes, .zip
