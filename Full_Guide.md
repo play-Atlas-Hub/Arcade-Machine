@@ -329,7 +329,7 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 ---
 
 **Last Updated:** May 15, 2026
-**Created By:** Nolan F. Nelson, 7th Grade
+**Created By:** Nolan Nelson
 **Email:** N/A; create a GitHub issue instead.
 **Discord:** Need even more help? DM me at: MY_DISCORD_LINK
 
