@@ -101,13 +101,13 @@
 1. Open a terminal on the Raspberry Pi or SSH in from your computer.
 2. Run:
    ```bash
-   passwd
+   $ passwd
    ```
 3. Follow the prompts to enter the current password and a new strong password.
     > [!TIP] Unless you will remember the password and keep it on the machine, use `Soaring1234!`
 4. Optionally set a Samba password for the `pi` account after enabling Samba:
    ```bash
-   sudo smbpasswd -a pi
+   $ sudo smbpasswd -a pi
    ```
 
 ### Setup Samba Network Share
@@ -116,8 +116,8 @@
    1. From EmulationStation, press `Start` or `Select` → `Quit` → `Quit EmulationStation`.
    2. Change to the RetroPie setup directory:
       ```bash
-      cd RetroPie-Setup
-      sudo ./retropie_setup.sh
+      $ cd RetroPie-Setup
+      $ sudo ./retropie_setup.sh
       ```
    3. In the RetroPie-Setup menu, go to `Configuration / Tools` → `samba` → `Install` or `Enable`.
 
@@ -155,9 +155,9 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
    1. Open Terminal
    2. Type this(one line at a time):
    > ```bash
-   > wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
-   > bash install.sh
-   > rm install.sh
+   > $ wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
+   > $ bash install.sh
+   > $ rm install.sh
    > ```
    3. Done
 
@@ -173,11 +173,11 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
    1. Open Terminal
    2. Type this(one line at a time):
    > ```bash
-   > ls
-   > rm -rf <the_directory_with_makecode_or_mcairpos>
-   > wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
-   > bash install.sh
-   > rm install.sh
+   > $ ls
+   > $ rm -rf <the_directory_with_makecode_or_mcairpos>
+   > $ wget https://raw.githubusercontent.com/Vegz78/McAirpos/master/install.sh
+   > $ bash install.sh
+   > $ rm install.sh
    > ```
    3. Done
 
