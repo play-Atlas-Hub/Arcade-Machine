@@ -189,13 +189,18 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 
 1. **Via Network Share (Recommended)**:
    - Connect to your Samba share from your computer (see Network Share section if not configured or look at note below):
->    > [!NOTE] Credentials
+>    > [!NOTE] Credentials:
 >    > Username: `pi`
 >    > Password: `<your_password>`
 >
->   - **Linux**:
+>   - **Linux**; *via scp with SSH*:
 >        1. Open terminal
->        2. Type in: `mv <your_game_file> smb://retropie-<your_classroom>/retropie/roms/<your_emulator>`
+>        ```bash
+>        # EXAMPLE: Please change files to actual files (any amount of files accepted); also change example IP(x.x.x.x) to real hostname or real IP
+>        $ cd <folder_containing_your_roms>
+>        $ ssh pi@x.x.x.x
+>        $ scp example_file1.txt example_file2.txt example_file3.txt pi@x.x.x.x:/home/pi/RetroPie/roms/<your_emulator>
+>        ```
 >        3. Done
 >   - **macOS**: 
 >        1. Open Any Internet Browser
@@ -213,9 +218,11 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 >   - Games will appear in EmulationStation within 10 seconds
 
 1. **Via USB Drive**:
-   - Create a USB drive or any storage drive with the folder: `retropie/`
+   - Find USB drive or any storage drive and format it `FAT32` or `exFat`
+   - Create the folder: `retropie/` or `retropie-mount/`
    - Plug drive into Raspberry PI
-   - Wait until binking on drive stops or becomes steady; Then wait ten more seconds
+   - Wait until binking LED on drive stops or becomes steady; Then wait ten more seconds
+   - If device doesn't have an LED wait about 1 minute (depends on the amount of data)
    - Unplug drive; And plug back into seperrate computer
    - Place ROMs/Game files in: `retropie/roms/<your_game_emulator>/`
    - Plug drive back into Raspberry PI
@@ -225,10 +232,14 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 
 2. **Via SSH**:
    > [!NOTE] This method is advanced and will not work first try and only recommended for experienced users.
+   1. Open terminal
    ```bash
-   ssh pi@<YOUR_RASPI_IP>
-   scp /path/to/roms/* pi@<YOUR_RASPI_IP>:/home/pi/RetroPie/roms/<SYSTEM>/
+      # EXAMPLE: Please change files to actual files (any amount of files accepted); also change example IP(x.x.x.x) to real hostname or real IP
+      $ cd <folder_containing_your_roms>
+      $ ssh pi@x.x.x.x
+      $ scp example_file1.txt example_file2.txt example_file3.txt pi@x.x.x.x:/home/pi/RetroPie/roms/<your_emulator>
    ```
+   3. Done
 3. **Via Boot Drive**:
    - Unplug boot drive from Raspberry PI
    - Plug into a seperrate computer
@@ -328,7 +339,7 @@ McAirpos is an application for managing and emulating MakeCode Arcade games on R
 
 ---
 
-**Last Updated:** May 15, 2026
+**Last Updated:** May 19, 2026
 
 **Created By:** Nolan Nelson
 
