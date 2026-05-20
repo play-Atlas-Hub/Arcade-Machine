@@ -147,6 +147,19 @@
         4. Drag and drop you file into that folder
         5. Done
 
+### Setup gpio arcade controllers
+
+
+Installation Script
+
+Download the installation script and install it:
+
+mkdir mkjoystick
+cd mkjoystick
+wget https://github.com/digitalLumberjack/mk ... install.sh
+sudo sh ./install.sh
+
+
 ### Install McAirpos
 
 McAirpos is an application for managing and emulating MakeCode Arcade games on RetroPie.
