@@ -156,7 +156,7 @@ Download the installation script and install it:
 ```bash
 $ mkdir mkjoystick
 $ cd mkjoystick
-$ wget https://github.com/digitalLumberjack/mk ... install.sh
+$ wget https://github.com/digitalLumberjack/mk_arcade_joystick_rpi/releases/download/0.1.1/install.sh
 $ sudo sh ./install.sh
 ```
 
