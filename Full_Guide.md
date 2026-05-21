@@ -153,12 +153,12 @@
 Installation Script
 
 Download the installation script and install it:
-
-mkdir mkjoystick
-cd mkjoystick
-wget https://github.com/digitalLumberjack/mk ... install.sh
-sudo sh ./install.sh
-
+```bash
+$ mkdir mkjoystick
+$ cd mkjoystick
+$ wget https://github.com/digitalLumberjack/mk ... install.sh
+$ sudo sh ./install.sh
+```
 
 ### Install McAirpos
 
